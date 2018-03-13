@@ -1333,4 +1333,20 @@ Text Notes 700  3250 0    47   ~ 0
 SPI Slave\nP1.2 : USIC0_CH1-DOUT0 : MOSI\nP0.7 : USIC0_CH1-DX0D : MISO\nP1.3 : USIC0_CH1-SCLKOUT: CLK\nP0.9 : USIC0_CH1-DX2B : SEL\n
 Text Notes 700  3800 0    47   ~ 0
 SPI Master\nP0.13 : USIC0_CH0-SELO4    : SEL\nP0.14 : USIC0_CH0-SCLKOUT : CLK\nP0.15 : USIC0_CH0-DX0B    : MISO\nP2.0  : USIC0_CH0-DOUT0   : MOSI
+Text GLabel 4750 2650 0    47   Input ~ 0
+M-CS
+Text GLabel 4750 3200 0    47   Input ~ 0
+M-CLK
+Text GLabel 4750 3000 0    47   Output ~ 0
+M-MISO
+Text GLabel 4750 3100 0    47   Input ~ 0
+M-MOSI
+Wire Wire Line
+	4750 2650 5200 2650
+Wire Wire Line
+	5200 3000 4750 3000
+Wire Wire Line
+	4750 3100 5200 3100
+Wire Wire Line
+	5200 3200 4750 3200
 $EndSCHEMATC
