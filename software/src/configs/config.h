@@ -33,6 +33,9 @@
 #define FIRMWARE_VERSION_MINOR 0
 #define FIRMWARE_VERSION_REVISION 0
 
+#define CRC8_START_VALUE 0
+#define CRC8_TYPE 0x7
+
 #include "config_custom_bootloader.h"
 
 #endif

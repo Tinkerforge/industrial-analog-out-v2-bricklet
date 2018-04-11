@@ -1,7 +1,7 @@
 /* industrial-analog-out-v2-bricklet
  * Copyright (C) 2018 Olaf Lüke <olaf@tinkerforge.com>
  *
- * main.c: Initialization for Industrial Analog Out V2 Bricklet
+ * dac7760.h: Driver for DAC7760 DA converter 
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,27 +19,40 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <stdio.h>
-#include <stdbool.h>
+#ifndef DAC7760_H
+#define DAC7760_H
 
-#include "configs/config.h"
+#include "bricklib2/hal/spi_fifo/spi_fifo.h"
 
-#include "bricklib2/bootloader/bootloader.h"
-#include "bricklib2/hal/system_timer/system_timer.h"
-#include "bricklib2/logging/logging.h"
-#include "communication.h"
-#include "dac7760.h"
+typedef struct {
+	uint16_t value;
+	bool value_update;
 
-int main(void) {
-	logging_init();
-	logd("Start Industrial Analog Out V2 Bricklet\n\r");
+	bool crc_enable;
+	bool config_update;
+	bool control_update;
 
-	communication_init();
-	dac7760_init();
+	uint8_t current_range;
+	uint8_t voltage_range;
+	bool enabled;
 
-	while(true) {
-		bootloader_tick();
-		communication_tick();
-		dac7760_tick();
-	}
-}
+	uint16_t write_length;
+	SPIFifo spi_fifo;
+} DAC7760;
+
+extern DAC7760 dac7760;
+
+void dac7760_init(void);
+void dac7760_tick(void);
+
+#define DAC7760_REG_NOP            0x00
+#define DAC7760_REG_WRITE_DAC      0x01
+#define DAC7760_REG_READ           0x02
+#define DAC7760_REG_WRITE_CONTROL  0x55
+#define DAC7760_REG_WRITE_RESET    0x56
+#define DAC7760_REG_WRITE_CONFIG   0x57
+#define DAC7760_REG_WRITE_CAL_GAIN 0x58
+#define DAC7760_REG_WRITE_CAL_ZERO 0x59
+#define DAC7760_REG_RESET_WATCHDOG 0x95
+
+#endif
