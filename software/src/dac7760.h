@@ -24,7 +24,13 @@
 
 #include "bricklib2/hal/spi_fifo/spi_fifo.h"
 
+#define DAC7760_MIN 0
+#define DAC7760_MAX 4095
+
 typedef struct {
+	uint16_t voltage;
+	uint16_t current;
+
 	uint16_t value;
 	bool value_update;
 
