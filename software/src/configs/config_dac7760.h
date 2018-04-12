@@ -25,7 +25,7 @@
 #include "xmc_gpio.h"
 #include "xmc_spi.h"
 
-#define DAC7760_SPI_BAUDRATE         400000
+#define DAC7760_SPI_BAUDRATE         100000
 #define DAC7760_USIC_CHANNEL         USIC0_CH0
 #define DAC7760_USIC_SPI             XMC_SPI0_CH0
 
