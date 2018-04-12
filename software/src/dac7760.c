@@ -120,26 +120,21 @@ void dac7760_tick(void) {
 				return;
 			}
 
-			dac7760.value_update = true;
-			dac7760.value += 1;
-			if(dac7760.value >= 4096) {
-				dac7760.value = 0;
-			}
 			if(dac7760.value_update) {
 				dac7760_write_register(DAC7760_REG_WRITE_DAC, dac7760.value << 4);
 				dac7760.value_update = false;
 				return;
 			}
 		} else {
-			 uint16_t data[16];
-			 uint16_t length = spi_fifo_read_fifo(&dac7760.spi_fifo, data, 16);
-			 if(length != dac7760.write_length) {
+			uint16_t data[16];
+			uint16_t length = spi_fifo_read_fifo(&dac7760.spi_fifo, data, 16);
+			if(length != dac7760.write_length) {
 				loge("DAC7760 unexpected write length: %d (length) != %d (expected length)\n\r", length, dac7760.write_length);
 				dac7760_init_spi();
 				dac7760.value_update = true;
-			 }
+			}
 
-			 dac7760.write_length = 0;
+			dac7760.write_length = 0;
 		}
 	}
 }
