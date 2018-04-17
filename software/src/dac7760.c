@@ -126,7 +126,7 @@ void dac7760_tick(void) {
 				return;
 			}
 		} else {
-			uint16_t data[16];
+			uint8_t data[16];
 			uint16_t length = spi_fifo_read_fifo(&dac7760.spi_fifo, data, 16);
 			if(length != dac7760.write_length) {
 				loge("DAC7760 unexpected write length: %d (length) != %d (expected length)\n\r", length, dac7760.write_length);
