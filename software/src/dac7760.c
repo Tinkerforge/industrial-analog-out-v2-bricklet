@@ -31,7 +31,7 @@ DAC7760 dac7760;
 
 void dac7760_init_spi(void) {
 	dac7760.spi_fifo.baudrate = DAC7760_SPI_BAUDRATE;
-	dac7760.spi_fifo.channel = DAC7760_USIC_CHANNEL;
+	dac7760.spi_fifo.channel = DAC7760_USIC_SPI;
 
 	dac7760.spi_fifo.rx_fifo_size = DAC7760_RX_FIFO_SIZE;
 	dac7760.spi_fifo.rx_fifo_pointer = DAC7760_RX_FIFO_POINTER;
