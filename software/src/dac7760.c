@@ -68,7 +68,7 @@ void dac7760_init(void) {
 	dac7760_init_spi();
 
 	dac7760.value = 0;
-	dac7760.enabled = true;
+	dac7760.enabled = false;
 	dac7760.voltage_range = INDUSTRIAL_ANALOG_OUT_V2_VOLTAGE_RANGE_0_TO_10V;
 	dac7760.current_range = INDUSTRIAL_ANALOG_OUT_V2_CURRENT_RANGE_4_TO_20MA;
 
