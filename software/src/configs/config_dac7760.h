@@ -26,7 +26,6 @@
 #include "xmc_spi.h"
 
 #define DAC7760_SPI_BAUDRATE         100000
-#define DAC7760_USIC_CHANNEL         USIC0_CH0
 #define DAC7760_USIC_SPI             XMC_SPI0_CH0
 
 #define DAC7760_RX_FIFO_SIZE         XMC_USIC_CH_FIFO_SIZE_16WORDS
