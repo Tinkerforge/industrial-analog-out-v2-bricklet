@@ -1,5 +1,6 @@
 /* industrial-analog-out-v2-bricklet
  * Copyright (C) 2018 Olaf Lüke <olaf@tinkerforge.com>
+ * Copyright (C) 2018 Ishraq Ibne Ashraf <ishraq@tinkerforge.com>
  *
  * dac7760.c: Driver for DAC7760 DA converter 
  *
@@ -21,13 +22,27 @@
 
 #include "dac7760.h"
 
+#include "communication.h"
 #include "configs/config_dac7760.h"
-#include "bricklib2/hal/spi_fifo/spi_fifo.h"
+
 #include "bricklib2/utility/crc8.h"
 #include "bricklib2/logging/logging.h"
-#include "communication.h"
+#include "bricklib2/hal/spi_fifo/spi_fifo.h"
+#include "bricklib2/hal/ccu4_pwm/ccu4_pwm.h"
+#include "bricklib2/hal/system_timer/system_timer.h"
 
 DAC7760 dac7760;
+
+XMC_GPIO_CONFIG_t channel_led_gpio_config = {
+	.mode         = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+	.output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH,
+};
+
+const XMC_GPIO_CONFIG_t channel_led_pwm_config	= {
+	.mode             = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT2,
+	.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD,
+	.output_level     = XMC_GPIO_OUTPUT_LEVEL_LOW,
+};
 
 void dac7760_init_spi(void) {
 	dac7760.spi_fifo.baudrate = DAC7760_SPI_BAUDRATE;
@@ -68,6 +83,8 @@ void dac7760_init(void) {
 	dac7760_init_spi();
 
 	dac7760.value = 0;
+	dac7760.voltage = 0;
+	dac7760.current = 0;
 	dac7760.enabled = false;
 	dac7760.voltage_range = INDUSTRIAL_ANALOG_OUT_V2_VOLTAGE_RANGE_0_TO_10V;
 	dac7760.current_range = INDUSTRIAL_ANALOG_OUT_V2_CURRENT_RANGE_4_TO_20MA;
@@ -78,6 +95,23 @@ void dac7760_init(void) {
 
 	dac7760.crc_enable = true;
 	dac7760.write_length = 0;
+
+	// Init channel status LED
+	dac7760.ch_status_led_cfg.min = 2000;
+	dac7760.ch_status_led_cfg.max = 5000;
+	dac7760.ch_status_led_cfg.ch_status_led_show = DAC7760_CH_STATUS_LED_SHOW_V;
+	dac7760.ch_status_led_cfg.channel_led_flicker_state.config = LED_FLICKER_CONFIG_OFF;
+	dac7760.ch_status_led_cfg.config = INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_SHOW_CHANNEL_STATUS;
+	dac7760.ch_status_led_cfg.config_old = INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_SHOW_CHANNEL_STATUS;
+	dac7760.ch_status_led_cfg.config_ch_status = INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_STATUS_CONFIG_INTENSITY;
+
+	XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT1_BASE, 1, &channel_led_pwm_config);
+
+	// PWM frequency = Core clock / 100
+	ccu4_pwm_init((XMC_GPIO_PORT_t *)PORT1_BASE, 1, 1, 100);
+
+	// Set to zero intensity
+	ccu4_pwm_set_duty_cycle(1, 0);
 }
 
 void dac7760_write_register(const uint8_t reg, const uint16_t data) {
@@ -88,6 +122,7 @@ void dac7760_write_register(const uint8_t reg, const uint16_t data) {
 }
 
 void dac7760_tick(void) {
+	uint16_t value = 0;
 	SPIFifoState state = spi_fifo_next_state(&dac7760.spi_fifo);
 
 	if(state & SPI_FIFO_STATE_ERROR) {
@@ -136,5 +171,127 @@ void dac7760_tick(void) {
 
 			dac7760.write_length = 0;
 		}
+	}
+
+	// Manage channel LEDs
+	if (dac7760.ch_status_led_cfg.config != dac7760.ch_status_led_cfg.config_old) {
+		if (dac7760.ch_status_led_cfg.config == INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_SHOW_CHANNEL_STATUS) {
+			XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT1_BASE, 1, &channel_led_pwm_config);
+
+			// PWM frequency = Core clock / 100
+			ccu4_pwm_init((XMC_GPIO_PORT_t *)PORT1_BASE, 1, 1, 100);
+
+			// Set to zero intensity
+			ccu4_pwm_set_duty_cycle(1, 0);
+		}
+		else {
+			XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT1_BASE, 1, &channel_led_gpio_config);
+
+			// Turn off the LED
+			XMC_GPIO_SetOutputHigh((XMC_GPIO_PORT_t *)PORT1_BASE, 1);
+		}
+
+		dac7760.ch_status_led_cfg.config_old = dac7760.ch_status_led_cfg.config;
+	}
+
+	switch (dac7760.ch_status_led_cfg.config) {
+		case INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_OFF:
+			dac7760.ch_status_led_cfg.channel_led_flicker_state.config = LED_FLICKER_CONFIG_OFF;
+			XMC_GPIO_SetOutputHigh((XMC_GPIO_PORT_t *)PORT1_BASE, 1);
+
+			break;
+
+		case INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_ON:
+			dac7760.ch_status_led_cfg.channel_led_flicker_state.config = LED_FLICKER_CONFIG_ON;
+			XMC_GPIO_SetOutputLow((XMC_GPIO_PORT_t *)PORT1_BASE, 1);
+
+			break;
+
+		case INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_SHOW_HEARTBEAT:
+			dac7760.ch_status_led_cfg.channel_led_flicker_state.config = LED_FLICKER_CONFIG_HEARTBEAT;
+
+			led_flicker_tick(&dac7760.ch_status_led_cfg.channel_led_flicker_state,
+								system_timer_get_ms(),
+								(XMC_GPIO_PORT_t *)PORT1_BASE, 1);
+
+			break;
+
+		case INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_SHOW_CHANNEL_STATUS:
+			if (dac7760.enabled) {
+				dac7760.ch_status_led_cfg.channel_led_flicker_state.config = LED_FLICKER_CONFIG_OFF;
+
+				if (dac7760.ch_status_led_cfg.ch_status_led_show == DAC7760_CH_STATUS_LED_SHOW_V) {
+					value = dac7760.voltage;
+				}
+				else {
+					value = dac7760.current;
+				}
+
+				if (dac7760.ch_status_led_cfg.config_ch_status == INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_STATUS_CONFIG_THRESHOLD) {
+					if ((dac7760.ch_status_led_cfg.min == 0) && (dac7760.ch_status_led_cfg.max > 0)) {
+						if (value < dac7760.ch_status_led_cfg.max) {
+							ccu4_pwm_set_duty_cycle(1, 100);
+						}
+						else {
+							ccu4_pwm_set_duty_cycle(1, 0);
+						}
+					}
+					else {
+						if (value > dac7760.ch_status_led_cfg.min) {
+							ccu4_pwm_set_duty_cycle(1, 100);
+						}
+						else {
+							ccu4_pwm_set_duty_cycle(1, 0);
+						}
+					}
+				}
+				else if (dac7760.ch_status_led_cfg.config_ch_status == INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_STATUS_CONFIG_INTENSITY) {
+					if (dac7760.ch_status_led_cfg.min > dac7760.ch_status_led_cfg.max) {
+						if (value > dac7760.ch_status_led_cfg.min) {
+							ccu4_pwm_set_duty_cycle(1, 0);
+						}
+						else if (value < dac7760.ch_status_led_cfg.max) {
+							ccu4_pwm_set_duty_cycle(1, 100);
+						}
+						else {
+							int32_t range = dac7760.ch_status_led_cfg.min - dac7760.ch_status_led_cfg.max;
+							int32_t scaled_channel_current = value - dac7760.ch_status_led_cfg.max;
+							int32_t pwm_dc = (scaled_channel_current * 100) / range;
+
+							ccu4_pwm_set_duty_cycle(1, (uint16_t)(100 - pwm_dc));
+						}
+					}
+					else {
+						if (value > dac7760.ch_status_led_cfg.max) {
+							ccu4_pwm_set_duty_cycle(1, 100);
+						}
+						else if (value < dac7760.ch_status_led_cfg.min) {
+							ccu4_pwm_set_duty_cycle(1, 0);
+						}
+						else {
+							int32_t range = dac7760.ch_status_led_cfg.max - dac7760.ch_status_led_cfg.min;
+							int32_t scaled_channel_current = value - dac7760.ch_status_led_cfg.min;
+							int32_t pwm_dc = (scaled_channel_current * 100) / range;
+
+							ccu4_pwm_set_duty_cycle(1, (uint16_t)pwm_dc);
+						}
+					}
+				}
+			}
+			else {
+				if (dac7760.ch_status_led_cfg.config == INDUSTRIAL_ANALOG_OUT_V2_CHANNEL_LED_CONFIG_SHOW_CHANNEL_STATUS) {
+					// Set to zero intensity
+					ccu4_pwm_set_duty_cycle(1, 0);
+				}
+				else {
+					// Turn off the LED
+					XMC_GPIO_SetOutputHigh((XMC_GPIO_PORT_t *)PORT1_BASE, 1);
+				}
+			}
+
+			break;
+
+		default:
+			break;
 	}
 }

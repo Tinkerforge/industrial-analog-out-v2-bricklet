@@ -1,5 +1,6 @@
 /* industrial-analog-out-v2-bricklet
  * Copyright (C) 2018 Olaf Lüke <olaf@tinkerforge.com>
+ * Copyright (C) 2018 Ishraq Ibne Ashraf <ishraq@tinkerforge.com>
  *
  * dac7760.h: Driver for DAC7760 DA converter 
  *
@@ -22,10 +23,24 @@
 #ifndef DAC7760_H
 #define DAC7760_H
 
+#include "bricklib2/utility/led_flicker.h"
 #include "bricklib2/hal/spi_fifo/spi_fifo.h"
 
 #define DAC7760_MIN 0
 #define DAC7760_MAX 4095
+
+#define DAC7760_CH_STATUS_LED_SHOW_V 0
+#define DAC7760_CH_STATUS_LED_SHOW_C 1
+
+typedef struct {
+	uint16_t min;
+	uint16_t max;
+	uint8_t config;
+	uint8_t config_old;
+	uint8_t config_ch_status;
+	uint8_t ch_status_led_show;
+	LEDFlickerState channel_led_flicker_state;
+} CHANNEL_LED_CONFIG_t;
 
 typedef struct {
 	uint16_t voltage;
@@ -43,6 +58,9 @@ typedef struct {
 	bool enabled;
 
 	uint16_t write_length;
+
+	CHANNEL_LED_CONFIG_t ch_status_led_cfg;
+
 	SPIFifo spi_fifo;
 } DAC7760;
 

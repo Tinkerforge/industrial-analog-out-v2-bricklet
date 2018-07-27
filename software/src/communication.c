@@ -1,5 +1,6 @@
 /* industrial-analog-out-v2-bricklet
  * Copyright (C) 2018 Olaf Lüke <olaf@tinkerforge.com>
+ * Copyright (C) 2018 Ishraq Ibne Ashraf <ishraq@tinkerforge.com>
  *
  * communication.c: TFP protocol message handling
  *
@@ -37,10 +38,13 @@ BootloaderHandleMessageResponse handle_message(const void *message, void *respon
 		case FID_GET_CURRENT: return get_current(message, response);
 		case FID_SET_CONFIGURATION: return set_configuration(message);
 		case FID_GET_CONFIGURATION: return get_configuration(message, response);
+		case FID_SET_CHANNEL_LED_CONFIG: return set_channel_led_config(message);
+		case FID_GET_CHANNEL_LED_CONFIG: return get_channel_led_config(message, response);
+		case FID_SET_CHANNEL_LED_STATUS_CONFIG: return set_channel_led_status_config(message);
+		case FID_GET_CHANNEL_LED_STATUS_CONFIG: return get_channel_led_status_config(message, response);
 		default: return HANDLE_MESSAGE_RESPONSE_NOT_SUPPORTED;
 	}
 }
-
 
 BootloaderHandleMessageResponse set_enabled(const SetEnabled *data) {
 	dac7760.enabled        = data->enabled;
@@ -91,6 +95,7 @@ BootloaderHandleMessageResponse set_voltage(const SetVoltage *data) {
 	}
 
 	dac7760.value_update = true;
+	dac7760.ch_status_led_cfg.ch_status_led_show = DAC7760_CH_STATUS_LED_SHOW_V;
 
 	return HANDLE_MESSAGE_RESPONSE_EMPTY;
 }
@@ -138,6 +143,7 @@ BootloaderHandleMessageResponse set_current(const SetCurrent *data) {
 	}
 
 	dac7760.value_update = true;
+	dac7760.ch_status_led_cfg.ch_status_led_show = DAC7760_CH_STATUS_LED_SHOW_C;
 
 	return HANDLE_MESSAGE_RESPONSE_EMPTY;
 }
@@ -171,9 +177,97 @@ BootloaderHandleMessageResponse get_configuration(const GetConfiguration *data, 
 	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;
 }
 
+BootloaderHandleMessageResponse set_channel_led_config(const SetChannelLEDConfig *data) {
+	if(data->channel != 0) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
 
+	dac7760.ch_status_led_cfg.config = data->config;
 
+	return HANDLE_MESSAGE_RESPONSE_EMPTY;
+}
 
+BootloaderHandleMessageResponse get_channel_led_config(const GetChannelLEDConfig *data, GetChannelLEDConfig_Response *response) {
+	response->header.length = sizeof(GetChannelLEDConfig_Response);
+
+	if(data->channel != 0) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+
+	response->config = dac7760.ch_status_led_cfg.config;
+
+	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;
+}
+
+BootloaderHandleMessageResponse set_channel_led_status_config(const SetChannelLEDStatusConfig *data) {
+	if(data->channel != 0) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+
+	if (data->min > 24000 || data->max > 24000) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+
+	if (dac7760.ch_status_led_cfg.ch_status_led_show == DAC7760_CH_STATUS_LED_SHOW_V) {
+		switch(dac7760.voltage_range) {
+			case INDUSTRIAL_ANALOG_OUT_V2_VOLTAGE_RANGE_0_TO_5V: {
+				dac7760.ch_status_led_cfg.min = BETWEEN(0, data->min, 5000);
+				dac7760.ch_status_led_cfg.max = BETWEEN(0, data->max, 5000);
+
+				break;
+			}
+
+			case INDUSTRIAL_ANALOG_OUT_V2_VOLTAGE_RANGE_0_TO_10V: {
+				dac7760.ch_status_led_cfg.min = BETWEEN(0, data->min, 10000);
+				dac7760.ch_status_led_cfg.max = BETWEEN(0, data->max, 10000);
+
+				break;
+			}
+		}
+	}
+	else {
+		switch(dac7760.current_range) {
+			case INDUSTRIAL_ANALOG_OUT_V2_CURRENT_RANGE_4_TO_20MA: {
+				dac7760.ch_status_led_cfg.min = BETWEEN(4000, data->min, 20000);
+				dac7760.ch_status_led_cfg.max = BETWEEN(4000, data->max, 20000);
+
+				break;
+			}
+
+			case INDUSTRIAL_ANALOG_OUT_V2_CURRENT_RANGE_0_TO_20MA: {
+				dac7760.ch_status_led_cfg.min = BETWEEN(0, data->min, 20000);
+				dac7760.ch_status_led_cfg.max = BETWEEN(0, data->max, 20000);
+
+				break;
+			}
+
+			case INDUSTRIAL_ANALOG_OUT_V2_CURRENT_RANGE_0_TO_24MA: {
+				dac7760.ch_status_led_cfg.min = BETWEEN(0, data->min, 24000);
+				dac7760.ch_status_led_cfg.max = BETWEEN(0, data->max, 24000);
+
+				break;
+			}
+		}
+	}
+
+	dac7760.ch_status_led_cfg.config_ch_status = data->config;
+
+	return HANDLE_MESSAGE_RESPONSE_EMPTY;
+}
+
+BootloaderHandleMessageResponse get_channel_led_status_config(const GetChannelLEDStatusConfig *data, GetChannelLEDStatusConfig_Response *response) {
+	response->header.length = sizeof(GetChannelLEDStatusConfig_Response);
+
+	if(data->channel != 0) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+
+	response->min = dac7760.ch_status_led_cfg.min;
+	response->max = dac7760.ch_status_led_cfg.max;
+	response->config = dac7760.ch_status_led_cfg.config_ch_status;
+
+	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;
+}
 
 void communication_tick(void) {
 	communication_callback_tick();
