@@ -1,36 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:tinkerforge
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
+EESchema Schematic File Version 4
 LIBS:industrial-analog-out-v2-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -47,7 +17,7 @@ $EndDescr
 Text Notes 6900 7650 2    47   ~ 0
 Copyright Tinkerforge GmbH 2018.\nThis documentation describes Open Hardware and is licensed under the\nCERN OHL v. 1.1.\nYou may redistribute and modify this documentation under the terms of the\nCERN OHL v.1.1. (http://ohwr.org/cernohl). This documentation is distributed\nWITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF\nMERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A\nPARTICULAR PURPOSE. Please see the CERN OHL v.1.1 for applicable\nconditions\n
 $Comp
-L GND #PWR1
+L industrial-analog-out-v2-rescue:GND #PWR1
 U 1 1 50066B39
 P 850 2350
 F 0 "#PWR1" H 850 2350 30  0001 C CNN
@@ -58,7 +28,7 @@ F 3 "" H 850 2350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DRILL U5
+L industrial-analog-out-v2-rescue:DRILL U5
 U 1 1 5006691C
 P 10650 6950
 F 0 "U5" H 10700 7000 60  0001 C CNN
@@ -69,7 +39,7 @@ F 3 "" H 10650 6950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DRILL U4
+L industrial-analog-out-v2-rescue:DRILL U4
 U 1 1 5006691A
 P 10650 6700
 F 0 "U4" H 10700 6750 60  0001 C CNN
@@ -80,7 +50,7 @@ F 3 "" H 10650 6700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DRILL U6
+L industrial-analog-out-v2-rescue:DRILL U6
 U 1 1 50066918
 P 11000 6700
 F 0 "U6" H 11050 6750 60  0001 C CNN
@@ -91,7 +61,7 @@ F 3 "" H 11000 6700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DRILL U7
+L industrial-analog-out-v2-rescue:DRILL U7
 U 1 1 50066905
 P 11000 6950
 F 0 "U7" H 11050 7000 60  0001 C CNN
@@ -102,7 +72,7 @@ F 3 "" H 11000 6950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR2
+L industrial-analog-out-v2-rescue:+5V #PWR2
 U 1 1 5326F89A
 P 1300 750
 F 0 "#PWR2" H 1300 840 20  0001 C CNN
@@ -113,7 +83,7 @@ F 3 "" H 1300 750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_8 P2
+L industrial-analog-out-v2-rescue:CONN_8 P2
 U 1 1 5429473E
 P 11050 2900
 F 0 "P2" V 11000 2900 60  0000 C CNN
@@ -124,7 +94,7 @@ F 3 "" H 11050 2900 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DACX760 U3
+L industrial-analog-out-v2-rescue:DACX760 U3
 U 1 1 551BE46E
 P 5900 2750
 F 0 "U3" H 5800 3700 60  0000 C CNN
@@ -135,7 +105,7 @@ F 3 "" H 5900 2750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R4
+L industrial-analog-out-v2-rescue:R R4
 U 1 1 551BF5C3
 P 5050 2150
 F 0 "R4" V 5130 2150 50  0000 C CNN
@@ -150,7 +120,7 @@ Wire Wire Line
 Wire Wire Line
 	5050 2450 5050 2400
 $Comp
-L 3V3 #PWR10
+L industrial-analog-out-v2-rescue:3V3 #PWR10
 U 1 1 551C00BE
 P 5050 700
 F 0 "#PWR10" H 5050 800 40  0001 C CNN
@@ -161,7 +131,7 @@ F 3 "" H 5050 700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 3V3 #PWR15
+L industrial-analog-out-v2-rescue:3V3 #PWR15
 U 1 1 551C059C
 P 5650 700
 F 0 "#PWR15" H 5650 800 40  0001 C CNN
@@ -172,7 +142,7 @@ F 3 "" H 5650 700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR11
+L industrial-analog-out-v2-rescue:GND #PWR11
 U 1 1 551C1520
 P 5100 4400
 F 0 "#PWR11" H 5100 4400 30  0001 C CNN
@@ -185,12 +155,12 @@ $EndComp
 Wire Wire Line
 	5200 2750 5100 2750
 Wire Wire Line
-	5100 2550 5100 4400
+	5100 2550 5100 2750
 Wire Wire Line
 	5200 2550 5100 2550
 Connection ~ 5100 2750
 $Comp
-L GND #PWR16
+L industrial-analog-out-v2-rescue:GND #PWR16
 U 1 1 551C19D5
 P 5750 4400
 F 0 "#PWR16" H 5750 4400 30  0001 C CNN
@@ -201,16 +171,16 @@ F 3 "" H 5750 4400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5750 3700 5750 4400
+	5750 3700 5750 3800
 Wire Wire Line
 	5650 3700 5650 3800
 Wire Wire Line
-	5650 3800 5850 3800
+	5650 3800 5750 3800
 Connection ~ 5750 3800
 Wire Wire Line
 	5850 3800 5850 3700
 $Comp
-L C C8
+L industrial-analog-out-v2-rescue:C C8
 U 1 1 551C1FBA
 P 6100 4000
 F 0 "C8" H 6150 4100 50  0000 L CNN
@@ -221,7 +191,7 @@ F 3 "" H 6100 4000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR18
+L industrial-analog-out-v2-rescue:GND #PWR18
 U 1 1 551C21F4
 P 6100 4400
 F 0 "#PWR18" H 6100 4400 30  0001 C CNN
@@ -241,7 +211,7 @@ Wire Wire Line
 	6100 4200 6100 4400
 Connection ~ 6100 3800
 $Comp
-L C C6
+L industrial-analog-out-v2-rescue:C C6
 U 1 1 551C2D5B
 P 5450 850
 F 0 "C6" V 5300 800 50  0000 L CNN
@@ -252,10 +222,10 @@ F 3 "" H 5450 850 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5650 1750 5650 700 
+	5650 1750 5650 850 
 Connection ~ 5650 850 
 $Comp
-L GND #PWR12
+L industrial-analog-out-v2-rescue:GND #PWR12
 U 1 1 551C36E3
 P 5200 950
 F 0 "#PWR12" H 5200 950 30  0001 C CNN
@@ -268,7 +238,7 @@ $EndComp
 Wire Wire Line
 	5050 1900 5050 700 
 $Comp
-L C C9
+L industrial-analog-out-v2-rescue:C C9
 U 1 1 551C3C0C
 P 6700 750
 F 0 "C9" V 6550 700 50  0000 L CNN
@@ -279,7 +249,7 @@ F 3 "" H 6700 750 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C C10
+L industrial-analog-out-v2-rescue:C C10
 U 1 1 551C3E2A
 P 6700 1050
 F 0 "C10" V 6550 1000 50  0000 L CNN
@@ -290,7 +260,7 @@ F 3 "" H 6700 1050 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR23
+L industrial-analog-out-v2-rescue:GND #PWR23
 U 1 1 551C4EED
 P 7100 1200
 F 0 "#PWR23" H 7100 1200 30  0001 C CNN
@@ -305,7 +275,7 @@ Wire Wire Line
 Wire Wire Line
 	6900 750  7100 750 
 $Comp
-L +12V #PWR19
+L industrial-analog-out-v2-rescue:+12V #PWR19
 U 1 1 551C5937
 P 6300 700
 F 0 "#PWR19" H 6300 650 20  0001 C CNN
@@ -316,7 +286,7 @@ F 3 "" H 6300 700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6300 700  6300 1750
+	6300 700  6300 750 
 Wire Wire Line
 	6500 750  6300 750 
 Connection ~ 6300 750 
@@ -324,7 +294,7 @@ Wire Wire Line
 	6500 1050 6300 1050
 Connection ~ 6300 1050
 $Comp
-L GND #PWR13
+L industrial-analog-out-v2-rescue:GND #PWR13
 U 1 1 551C82C6
 P 5200 1650
 F 0 "#PWR13" H 5200 1650 30  0001 C CNN
@@ -338,7 +308,7 @@ Wire Wire Line
 	5400 1600 5400 1750
 NoConn ~ 5400 3700
 $Comp
-L R R5
+L industrial-analog-out-v2-rescue:R R5
 U 1 1 551C9533
 P 5500 4000
 F 0 "R5" V 5580 4000 50  0000 C CNN
@@ -349,7 +319,7 @@ F 3 "" H 5500 4000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR14
+L industrial-analog-out-v2-rescue:GND #PWR14
 U 1 1 551C98A9
 P 5500 4400
 F 0 "#PWR14" H 5500 4400 30  0001 C CNN
@@ -364,7 +334,7 @@ Wire Wire Line
 Wire Wire Line
 	5500 4250 5500 4400
 $Comp
-L R R6
+L industrial-analog-out-v2-rescue:R R6
 U 1 1 551CB2BD
 P 7500 2350
 F 0 "R6" V 7450 2550 50  0000 C CNN
@@ -375,7 +345,7 @@ F 3 "" H 7500 2350 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R7
+L industrial-analog-out-v2-rescue:R R7
 U 1 1 551CB792
 P 7500 2550
 F 0 "R7" V 7450 2750 50  0000 C CNN
@@ -386,7 +356,7 @@ F 3 "" H 7500 2550 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C C11
+L industrial-analog-out-v2-rescue:C C11
 U 1 1 551CB92A
 P 6900 2450
 F 0 "C11" V 6850 2500 50  0000 L CNN
@@ -403,7 +373,7 @@ Wire Wire Line
 Wire Wire Line
 	7200 2450 7200 2550
 Wire Wire Line
-	6550 2550 7250 2550
+	6550 2550 7200 2550
 Connection ~ 7200 2550
 Wire Wire Line
 	6550 2350 7250 2350
@@ -412,11 +382,11 @@ Wire Wire Line
 Wire Wire Line
 	7850 2350 7850 2550
 Wire Wire Line
-	7750 2550 8200 2550
+	7750 2550 7850 2550
 Connection ~ 7850 2550
 NoConn ~ 6550 3100
 $Comp
-L GND #PWR20
+L industrial-analog-out-v2-rescue:GND #PWR20
 U 1 1 551CD234
 P 6850 4400
 F 0 "#PWR20" H 6850 4400 30  0001 C CNN
@@ -433,10 +403,10 @@ Wire Wire Line
 Wire Wire Line
 	6550 3200 8200 3200
 Wire Wire Line
-	7100 750  7100 1200
+	7100 750  7100 1050
 Connection ~ 7100 1050
 $Comp
-L GND #PWR17
+L industrial-analog-out-v2-rescue:GND #PWR17
 U 1 1 551DD56C
 P 5900 1650
 F 0 "#PWR17" H 5900 1650 30  0001 C CNN
@@ -453,7 +423,7 @@ Wire Wire Line
 Wire Wire Line
 	6050 1600 6050 1750
 $Comp
-L +12V #PWR33
+L industrial-analog-out-v2-rescue:+12V #PWR33
 U 1 1 551DF6B5
 P 10450 1300
 F 0 "#PWR33" H 10450 1250 20  0001 C CNN
@@ -464,7 +434,7 @@ F 3 "" H 10450 1300 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L FUSE F1
+L industrial-analog-out-v2-rescue:FUSE F1
 U 1 1 551E30D0
 P 10450 1650
 F 0 "F1" H 10550 1700 40  0000 C CNN
@@ -475,7 +445,7 @@ F 3 "" H 10450 1650 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L INDUCT L4
+L industrial-analog-out-v2-rescue:INDUCT L4
 U 1 1 551E36C5
 P 8450 2550
 F 0 "L4" V 8530 2550 50  0000 C CNN
@@ -486,7 +456,7 @@ F 3 "" H 8450 2550 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R8
+L industrial-analog-out-v2-rescue:R R8
 U 1 1 551E3D7C
 P 8450 3200
 F 0 "R8" V 8400 3400 50  0000 C CNN
@@ -497,7 +467,7 @@ F 3 "" H 8450 3200 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L TVS2 D3
+L industrial-analog-out-v2-rescue:TVS2 D3
 U 1 1 551E4211
 P 8850 3200
 F 0 "D3" H 8895 3360 40  0000 C CNN
@@ -508,7 +478,7 @@ F 3 "" V 8850 3275 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR34
+L industrial-analog-out-v2-rescue:GND #PWR34
 U 1 1 551E607B
 P 10550 4400
 F 0 "#PWR34" H 10550 4400 30  0001 C CNN
@@ -529,9 +499,9 @@ Wire Wire Line
 Wire Wire Line
 	10450 2550 10700 2550
 Wire Wire Line
-	10450 1900 10450 2750
+	10450 1900 10450 2200
 $Comp
-L TVS D4
+L industrial-analog-out-v2-rescue:TVS D4
 U 1 1 551E7E53
 P 10200 2200
 F 0 "D4" H 10150 2300 40  0000 C CNN
@@ -546,7 +516,7 @@ Wire Wire Line
 Connection ~ 10450 2200
 Connection ~ 10450 2550
 $Comp
-L GND #PWR31
+L industrial-analog-out-v2-rescue:GND #PWR31
 U 1 1 551E8C85
 P 9950 2300
 F 0 "#PWR31" H 9950 2300 30  0001 C CNN
@@ -559,7 +529,7 @@ $EndComp
 Wire Wire Line
 	9950 2300 9950 2200
 $Comp
-L TVS2 D2
+L industrial-analog-out-v2-rescue:TVS2 D2
 U 1 1 551E9268
 P 8850 2550
 F 0 "D2" H 8895 2710 40  0000 C CNN
@@ -570,7 +540,7 @@ F 3 "" V 8850 2625 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8700 2550 9800 2550
+	8700 2550 8950 2550
 Wire Wire Line
 	9800 2550 9800 2950
 Wire Wire Line
@@ -582,7 +552,7 @@ Wire Wire Line
 	9800 3150 10700 3150
 Connection ~ 8950 3200
 $Comp
-L +12V #PWR26
+L industrial-analog-out-v2-rescue:+12V #PWR26
 U 1 1 551E9F9B
 P 8850 2300
 F 0 "#PWR26" H 8850 2250 20  0001 C CNN
@@ -595,7 +565,7 @@ $EndComp
 Wire Wire Line
 	8850 2300 8850 2350
 $Comp
-L +12V #PWR28
+L industrial-analog-out-v2-rescue:+12V #PWR28
 U 1 1 551EB129
 P 8850 2950
 F 0 "#PWR28" H 8850 2900 20  0001 C CNN
@@ -608,7 +578,7 @@ $EndComp
 Wire Wire Line
 	8850 3000 8850 2950
 $Comp
-L GND #PWR27
+L industrial-analog-out-v2-rescue:GND #PWR27
 U 1 1 551EBBA4
 P 8850 2800
 F 0 "#PWR27" H 8850 2800 30  0001 C CNN
@@ -621,7 +591,7 @@ $EndComp
 Wire Wire Line
 	8850 2800 8850 2750
 $Comp
-L GND #PWR29
+L industrial-analog-out-v2-rescue:GND #PWR29
 U 1 1 551EC1E8
 P 8850 4400
 F 0 "#PWR29" H 8850 4400 30  0001 C CNN
@@ -636,7 +606,7 @@ Wire Wire Line
 Wire Wire Line
 	7850 6100 7850 5650
 $Comp
-L GND #PWR24
+L industrial-analog-out-v2-rescue:GND #PWR24
 U 1 1 5547B17C
 P 7850 6100
 F 0 "#PWR24" H 7850 6100 30  0001 C CNN
@@ -653,7 +623,7 @@ Wire Wire Line
 Wire Wire Line
 	8350 5500 8200 5500
 $Comp
-L R R1
+L industrial-analog-out-v2-rescue:R R1
 U 1 1 5547AACC
 P 8200 5200
 F 0 "R1" V 8280 5200 50  0000 C CNN
@@ -664,7 +634,7 @@ F 3 "" H 8200 5200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C2
+L industrial-analog-out-v2-rescue:C C2
 U 1 1 5547AA0C
 P 7850 5450
 F 0 "C2" V 7700 5400 50  0000 L CNN
@@ -675,7 +645,7 @@ F 3 "" H 7850 5450 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	7750 4950 8450 4950
+	7750 4950 7850 4950
 Wire Wire Line
 	8400 5150 8400 4950
 Wire Wire Line
@@ -686,26 +656,26 @@ Wire Wire Line
 Wire Wire Line
 	9100 4950 9100 5150
 Wire Wire Line
-	9050 4950 9200 4950
+	9050 4950 9100 4950
 Wire Wire Line
 	9500 5250 9500 5500
 Connection ~ 10000 4950
 Connection ~ 10000 5250
 Wire Wire Line
-	10000 4950 10000 5500
+	10000 4950 10000 5250
 Wire Wire Line
 	10000 5500 9950 5500
 Connection ~ 9500 5500
 Wire Wire Line
-	9150 5500 9550 5500
+	9150 5500 9500 5500
 Wire Wire Line
 	9500 6100 9500 6000
 Wire Wire Line
 	10250 5650 10250 6100
 Wire Wire Line
-	9600 4950 10350 4950
+	9600 4950 10000 4950
 $Comp
-L GND #PWR32
+L industrial-analog-out-v2-rescue:GND #PWR32
 U 1 1 55479F2B
 P 10250 6100
 F 0 "#PWR32" H 10250 6100 30  0001 C CNN
@@ -716,7 +686,7 @@ F 3 "" H 10250 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R3
+L industrial-analog-out-v2-rescue:R R3
 U 1 1 55479DC6
 P 9750 5250
 F 0 "R3" V 9830 5250 50  0000 C CNN
@@ -727,7 +697,7 @@ F 3 "" H 9750 5250 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR30
+L industrial-analog-out-v2-rescue:GND #PWR30
 U 1 1 55479999
 P 9500 6100
 F 0 "#PWR30" H 9500 6100 30  0001 C CNN
@@ -740,7 +710,7 @@ $EndComp
 Wire Wire Line
 	8750 6100 8750 5850
 $Comp
-L C C4
+L industrial-analog-out-v2-rescue:C C4
 U 1 1 554795FF
 P 9750 5500
 F 0 "C4" V 9700 5550 50  0000 L CNN
@@ -751,7 +721,7 @@ F 3 "" H 9750 5500 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R2
+L industrial-analog-out-v2-rescue:R R2
 U 1 1 5547946F
 P 9500 5750
 F 0 "R2" V 9580 5750 50  0000 C CNN
@@ -762,7 +732,7 @@ F 3 "" H 9500 5750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C5
+L industrial-analog-out-v2-rescue:C C5
 U 1 1 55479137
 P 10250 5450
 F 0 "C5" V 10100 5400 50  0000 L CNN
@@ -773,7 +743,7 @@ F 3 "" H 10250 5450 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L DIODESCH D1
+L industrial-analog-out-v2-rescue:DIODESCH D1
 U 1 1 55478E56
 P 9400 4950
 F 0 "D1" H 9400 5050 40  0000 C CNN
@@ -784,7 +754,7 @@ F 3 "" H 9400 4950 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L INDUCTOR L2
+L industrial-analog-out-v2-rescue:INDUCTOR L2
 U 1 1 55478A9A
 P 8750 4950
 F 0 "L2" V 8700 4950 40  0000 C CNN
@@ -795,7 +765,7 @@ F 3 "" H 8750 4950 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR25
+L industrial-analog-out-v2-rescue:GND #PWR25
 U 1 1 554785D5
 P 8750 6100
 F 0 "#PWR25" H 8750 6100 30  0001 C CNN
@@ -806,7 +776,7 @@ F 3 "" H 8750 6100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LMR62014X U1
+L industrial-analog-out-v2-rescue:LMR62014X U1
 U 1 1 554783D5
 P 8750 5500
 F 0 "U1" H 8450 5200 60  0000 C CNN
@@ -817,7 +787,7 @@ F 3 "" H 8750 5500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR21
+L industrial-analog-out-v2-rescue:+5V #PWR21
 U 1 1 551D9F61
 P 7050 4850
 F 0 "#PWR21" H 7050 4940 20  0001 C CNN
@@ -828,7 +798,7 @@ F 3 "" H 7050 4850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR36
+L industrial-analog-out-v2-rescue:+12V #PWR36
 U 1 1 551D7236
 P 10950 4900
 F 0 "#PWR36" H 10950 4850 20  0001 C CNN
@@ -841,7 +811,7 @@ $EndComp
 Connection ~ 7850 4950
 Connection ~ 10250 4950
 $Comp
-L INDUCT L3
+L industrial-analog-out-v2-rescue:INDUCT L3
 U 1 1 5547E852
 P 10600 4950
 F 0 "L3" V 10680 4950 50  0000 C CNN
@@ -852,7 +822,7 @@ F 3 "" H 10600 4950 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C C7
+L industrial-analog-out-v2-rescue:C C7
 U 1 1 5547EBDA
 P 10850 5450
 F 0 "C7" V 10700 5400 50  0000 L CNN
@@ -863,7 +833,7 @@ F 3 "" H 10850 5450 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR35
+L industrial-analog-out-v2-rescue:GND #PWR35
 U 1 1 5547EC52
 P 10850 6100
 F 0 "#PWR35" H 10850 6100 30  0001 C CNN
@@ -885,7 +855,7 @@ Wire Wire Line
 	10850 6100 10850 5650
 Connection ~ 10850 4950
 $Comp
-L INDUCT L1
+L industrial-analog-out-v2-rescue:INDUCT L1
 U 1 1 55480197
 P 7500 4950
 F 0 "L1" V 7580 4950 50  0000 C CNN
@@ -896,7 +866,7 @@ F 3 "" H 7500 4950 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C C1
+L industrial-analog-out-v2-rescue:C C1
 U 1 1 55480353
 P 7050 5450
 F 0 "C1" V 6900 5400 50  0000 L CNN
@@ -907,7 +877,7 @@ F 3 "" H 7050 5450 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR22
+L industrial-analog-out-v2-rescue:GND #PWR22
 U 1 1 55480405
 P 7050 6100
 F 0 "#PWR22" H 7050 6100 30  0001 C CNN
@@ -922,12 +892,12 @@ Wire Wire Line
 Wire Wire Line
 	7250 4950 7050 4950
 Wire Wire Line
-	7050 4850 7050 5250
+	7050 4850 7050 4950
 Connection ~ 7050 4950
 Wire Wire Line
 	7850 4950 7850 5250
 $Comp
-L C C3
+L industrial-analog-out-v2-rescue:C C3
 U 1 1 50065789
 P 1650 1050
 F 0 "C3" H 1700 1150 50  0000 L CNN
@@ -938,11 +908,11 @@ F 3 "" H 1650 1050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8700 3200 9800 3200
+	8700 3200 8950 3200
 Wire Wire Line
 	10700 2650 10550 2650
 Wire Wire Line
-	10550 2650 10550 4400
+	10550 2650 10550 2850
 Connection ~ 10550 2850
 Connection ~ 10550 3050
 Connection ~ 10550 3250
@@ -955,7 +925,7 @@ Wire Wire Line
 Wire Wire Line
 	5200 850  5200 950 
 $Comp
-L CON-SENSOR2 P1
+L industrial-analog-out-v2-rescue:CON-SENSOR2 P1
 U 1 1 5AA8B3AC
 P 850 1500
 F 0 "P1" H 700 1900 60  0000 C CNN
@@ -966,7 +936,7 @@ F 3 "" H 950 1350 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L C C13
+L industrial-analog-out-v2-rescue:C C13
 U 1 1 5AA8C413
 P 2150 1050
 F 0 "C13" H 2200 1150 50  0000 L CNN
@@ -977,7 +947,7 @@ F 3 "" H 2150 1050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 3V3 #PWR5
+L industrial-analog-out-v2-rescue:3V3 #PWR5
 U 1 1 5AA8D071
 P 2150 750
 F 0 "#PWR5" H 2150 850 40  0001 C CNN
@@ -988,7 +958,7 @@ F 3 "" H 2150 750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR6
+L industrial-analog-out-v2-rescue:GND #PWR6
 U 1 1 5AA8E27C
 P 2150 1350
 F 0 "#PWR6" H 2150 1350 30  0001 C CNN
@@ -999,7 +969,7 @@ F 3 "" H 2150 1350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C12
+L industrial-analog-out-v2-rescue:C C12
 U 1 1 5AA8E7F1
 P 1450 2050
 F 0 "C12" H 1500 2150 50  0000 L CNN
@@ -1010,7 +980,7 @@ F 3 "" H 1450 2050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_PACK4 RP1
+L industrial-analog-out-v2-rescue:R_PACK4 RP1
 U 1 1 5AA8EBA9
 P 1850 1850
 F 0 "RP1" H 1850 2300 50  0000 C CNN
@@ -1021,9 +991,9 @@ F 3 "" H 1850 1850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1200 1300 2150 1300
+	1200 1300 1650 1300
 Wire Wire Line
-	2150 1250 2150 1350
+	2150 1250 2150 1300
 Wire Wire Line
 	1650 1250 1650 1300
 Connection ~ 1650 1300
@@ -1033,9 +1003,9 @@ Wire Wire Line
 Wire Wire Line
 	1450 1400 1450 800 
 Wire Wire Line
-	1450 800  2150 800 
+	1450 800  1650 800 
 Wire Wire Line
-	2150 750  2150 850 
+	2150 750  2150 800 
 Connection ~ 2150 800 
 Wire Wire Line
 	1650 850  1650 800 
@@ -1051,12 +1021,12 @@ Wire Wire Line
 Wire Wire Line
 	1200 1700 1650 1700
 Wire Wire Line
-	1200 1800 1650 1800
+	1200 1800 1450 1800
 Wire Wire Line
 	1450 1850 1450 1800
 Connection ~ 1450 1800
 $Comp
-L GND #PWR3
+L industrial-analog-out-v2-rescue:GND #PWR3
 U 1 1 5AA9142B
 P 1450 2350
 F 0 "#PWR3" H 1450 2350 30  0001 C CNN
@@ -1087,7 +1057,7 @@ S-MOSI
 Text GLabel 2300 1800 2    47   Input ~ 0
 S-MISO
 $Comp
-L XMC1XXX24 U2
+L industrial-analog-out-v2-rescue:XMC1XXX24 U2
 U 1 1 5AA96366
 P 3650 7000
 F 0 "U2" H 3500 7400 60  0000 C CNN
@@ -1098,7 +1068,7 @@ F 3 "" H 3800 7750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L XMC1XXX24 U2
+L industrial-analog-out-v2-rescue:XMC1XXX24 U2
 U 2 1 5AA9641D
 P 3650 3300
 F 0 "U2" H 3500 3850 60  0000 C CNN
@@ -1109,7 +1079,7 @@ F 3 "" H 3800 4050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L XMC1XXX24 U2
+L industrial-analog-out-v2-rescue:XMC1XXX24 U2
 U 3 1 5AA964B2
 P 3650 4550
 F 0 "U2" H 3500 4800 60  0000 C CNN
@@ -1120,7 +1090,7 @@ F 3 "" H 3800 5300 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L XMC1XXX24 U2
+L industrial-analog-out-v2-rescue:XMC1XXX24 U2
 U 4 1 5AA96558
 P 3650 5650
 F 0 "U2" H 3500 6100 60  0000 C CNN
@@ -1131,7 +1101,7 @@ F 3 "" H 3800 6400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C14
+L industrial-analog-out-v2-rescue:C C14
 U 1 1 5AA989EA
 P 3100 6950
 F 0 "C14" H 3150 7050 50  0000 L CNN
@@ -1142,7 +1112,7 @@ F 3 "" H 3100 6950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR9
+L industrial-analog-out-v2-rescue:GND #PWR9
 U 1 1 5AA994B2
 P 3100 7350
 F 0 "#PWR9" H 3100 7350 30  0001 C CNN
@@ -1153,7 +1123,7 @@ F 3 "" H 3100 7350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 3V3 #PWR8
+L industrial-analog-out-v2-rescue:3V3 #PWR8
 U 1 1 5AA996C5
 P 3100 6650
 F 0 "#PWR8" H 3100 6750 40  0001 C CNN
@@ -1164,7 +1134,7 @@ F 3 "" H 3100 6650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3100 7150 3100 7350
+	3100 7150 3100 7200
 Wire Wire Line
 	3300 7200 3100 7200
 Connection ~ 3100 7200
@@ -1172,7 +1142,7 @@ Wire Wire Line
 	3300 7300 3100 7300
 Connection ~ 3100 7300
 Wire Wire Line
-	3100 6650 3100 6750
+	3100 6650 3100 6700
 Wire Wire Line
 	3300 6700 3100 6700
 Connection ~ 3100 6700
@@ -1185,7 +1155,7 @@ Wire Wire Line
 Wire Wire Line
 	3050 4700 3300 4700
 $Comp
-L CONN_01X01 P3
+L industrial-analog-out-v2-rescue:CONN_01X01 P3
 U 1 1 5AAA3BFB
 P 2850 2850
 F 0 "P3" H 2850 2950 50  0000 C CNN
@@ -1200,7 +1170,7 @@ S-MISO
 Text GLabel 3050 3350 0    47   Input ~ 0
 S-CS
 $Comp
-L R_PACK4 RP2
+L industrial-analog-out-v2-rescue:R_PACK4 RP2
 U 1 1 5AAA790D
 P 2850 3900
 F 0 "RP2" H 2850 4350 50  0000 C CNN
@@ -1260,7 +1230,7 @@ NoConn ~ 3300 5700
 NoConn ~ 3300 5800
 NoConn ~ 3300 6000
 $Comp
-L LED D5
+L industrial-analog-out-v2-rescue:LED D5
 U 1 1 5AAB3B63
 P 1950 4400
 F 0 "D5" H 1950 4500 50  0000 C CNN
@@ -1271,7 +1241,7 @@ F 3 "" H 1950 4400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 3V3 #PWR4
+L industrial-analog-out-v2-rescue:3V3 #PWR4
 U 1 1 5AAB4864
 P 1700 4350
 F 0 "#PWR4" H 1700 4450 40  0001 C CNN
@@ -1282,7 +1252,7 @@ F 3 "" H 1700 4350 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X02 P4
+L industrial-analog-out-v2-rescue:CONN_01X02 P4
 U 1 1 5AABA086
 P 2850 5950
 F 0 "P4" H 2850 6100 50  0000 C CNN
@@ -1293,7 +1263,7 @@ F 3 "" H 2850 5950 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR7
+L industrial-analog-out-v2-rescue:GND #PWR7
 U 1 1 5AABD265
 P 3100 6050
 F 0 "#PWR7" H 3100 6050 30  0001 C CNN
@@ -1335,9 +1305,9 @@ Wire Wire Line
 Wire Wire Line
 	1750 4400 1700 4400
 Wire Wire Line
-	1700 4350 1700 4700
+	1700 4350 1700 4400
 $Comp
-L LED D6
+L industrial-analog-out-v2-rescue:LED D6
 U 1 1 5AAF65DF
 P 1950 4700
 F 0 "D6" H 1950 4800 50  0000 C CNN
@@ -1348,7 +1318,7 @@ F 3 "" H 1950 4700 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_PACK4 RP3
+L industrial-analog-out-v2-rescue:R_PACK4 RP3
 U 1 1 5AAF66DC
 P 2400 4750
 F 0 "RP3" H 2400 5200 50  0000 C CNN
@@ -1375,4 +1345,72 @@ Wire Wire Line
 Wire Wire Line
 	1700 4700 1750 4700
 Connection ~ 1700 4400
+Wire Wire Line
+	5100 2750 5100 4400
+Wire Wire Line
+	5750 3800 5750 4400
+Wire Wire Line
+	5750 3800 5850 3800
+Wire Wire Line
+	5650 850  5650 700 
+Wire Wire Line
+	6300 750  6300 1050
+Wire Wire Line
+	6300 1050 6300 1750
+Wire Wire Line
+	7200 2550 7250 2550
+Wire Wire Line
+	7850 2550 8200 2550
+Wire Wire Line
+	7100 1050 7100 1200
+Wire Wire Line
+	10450 2200 10450 2550
+Wire Wire Line
+	10450 2550 10450 2750
+Wire Wire Line
+	8950 2550 9800 2550
+Wire Wire Line
+	8950 3200 9800 3200
+Wire Wire Line
+	8200 4950 8400 4950
+Wire Wire Line
+	8400 4950 8450 4950
+Wire Wire Line
+	9100 4950 9200 4950
+Wire Wire Line
+	10000 4950 10250 4950
+Wire Wire Line
+	10000 5250 10000 5500
+Wire Wire Line
+	9500 5500 9550 5500
+Wire Wire Line
+	7850 4950 8200 4950
+Wire Wire Line
+	10250 4950 10350 4950
+Wire Wire Line
+	7050 4950 7050 5250
+Wire Wire Line
+	10550 2850 10550 3050
+Wire Wire Line
+	10550 3050 10550 3250
+Wire Wire Line
+	10550 3250 10550 4400
+Wire Wire Line
+	1650 1300 2150 1300
+Wire Wire Line
+	2150 1300 2150 1350
+Wire Wire Line
+	2150 800  2150 850 
+Wire Wire Line
+	1650 800  2150 800 
+Wire Wire Line
+	1450 1800 1650 1800
+Wire Wire Line
+	3100 7200 3100 7300
+Wire Wire Line
+	3100 7300 3100 7350
+Wire Wire Line
+	3100 6700 3100 6750
+Wire Wire Line
+	1700 4400 1700 4700
 $EndSCHEMATC
