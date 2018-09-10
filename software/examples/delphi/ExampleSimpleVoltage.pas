@@ -37,11 +37,11 @@ begin
 
   { Set output voltage to 3.3V }
   iao.SetVoltage(3300);
-  iao.Enable;
+  iao.SetEnabled(true);
 
   WriteLn('Press key to exit');
   ReadLn;
-  iao.Disable;
+  iao.SetEnabled(false);
   ipcon.Destroy; { Calls ipcon.Disconnect internally }
 end;
 

@@ -15,11 +15,11 @@ Module ExampleSimpleCurrent
 
         ' Set output current to 4.5mA
         iao.SetCurrent(4500)
-        iao.Enable()
+        iao.SetEnabled(True)
 
         Console.WriteLine("Press key to exit")
         Console.ReadLine()
-        iao.Disable()
+        iao.SetEnabled(False)
         ipcon.Disconnect()
     End Sub
 End Module

@@ -37,11 +37,11 @@ begin
 
   { Set output current to 4.5mA }
   iao.SetCurrent(4500);
-  iao.Enable;
+  iao.SetEnabled(true);
 
   WriteLn('Press key to exit');
   ReadLn;
-  iao.Disable;
+  iao.SetEnabled(false);
   ipcon.Destroy; { Calls ipcon.Disconnect internally }
 end;
 

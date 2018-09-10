@@ -18,9 +18,9 @@ ipcon.connect HOST, PORT # Connect to brickd
 
 # Set output voltage to 3.3V
 iao.set_voltage 3300
-iao.enable
+iao.set_enabled true
 
 puts 'Press key to exit'
 $stdin.gets
-iao.disable
+iao.set_enabled false
 ipcon.disconnect

@@ -20,10 +20,10 @@ public class ExampleSimpleCurrent {
 
 		// Set output current to 4.5mA
 		iao.setCurrent(4500);
-		iao.enable();
+		iao.setEnabled(true);
 
 		System.out.println("Press key to exit"); System.in.read();
-		iao.disable();
+		iao.setEnabled(false);
 		ipcon.disconnect();
 	}
 }

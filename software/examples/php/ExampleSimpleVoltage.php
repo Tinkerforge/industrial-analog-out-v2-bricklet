@@ -18,11 +18,11 @@ $ipcon->connect(HOST, PORT); // Connect to brickd
 
 // Set output voltage to 3.3V
 $iao->setVoltage(3300);
-$iao->enable();
+$iao->setEnabled(TRUE);
 
 echo "Press key to exit\n";
 fgetc(fopen('php://stdin', 'r'));
-$iao->disable();
+$iao->setEnabled(FALSE);
 $ipcon->disconnect();
 
 ?>

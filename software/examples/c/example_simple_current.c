@@ -25,11 +25,11 @@ int main(void) {
 
 	// Set output current to 4.5mA
 	industrial_analog_out_v2_set_current(&iao, 4500);
-	industrial_analog_out_v2_enable(&iao);
+	industrial_analog_out_v2_set_enabled(&iao, true);
 
 	printf("Press key to exit\n");
 	getchar();
-	industrial_analog_out_v2_disable(&iao);
+	industrial_analog_out_v2_set_enabled(&iao, false);
 	industrial_analog_out_v2_destroy(&iao);
 	ipcon_destroy(&ipcon); // Calls ipcon_disconnect internally
 	return 0;

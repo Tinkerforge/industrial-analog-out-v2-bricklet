@@ -18,9 +18,9 @@ ipcon.connect HOST, PORT # Connect to brickd
 
 # Set output current to 4.5mA
 iao.set_current 4500
-iao.enable
+iao.set_enabled true
 
 puts 'Press key to exit'
 $stdin.gets
-iao.disable
+iao.set_enabled false
 ipcon.disconnect

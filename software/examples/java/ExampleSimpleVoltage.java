@@ -20,10 +20,10 @@ public class ExampleSimpleVoltage {
 
 		// Set output voltage to 3.3V
 		iao.setVoltage(3300);
-		iao.enable();
+		iao.setEnabled(true);
 
 		System.out.println("Press key to exit"); System.in.read();
-		iao.disable();
+		iao.setEnabled(false);
 		ipcon.disconnect();
 	}
 }

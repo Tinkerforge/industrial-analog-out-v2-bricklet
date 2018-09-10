@@ -25,11 +25,11 @@ int main(void) {
 
 	// Set output voltage to 3.3V
 	industrial_analog_out_v2_set_voltage(&iao, 3300);
-	industrial_analog_out_v2_enable(&iao);
+	industrial_analog_out_v2_set_enabled(&iao, true);
 
 	printf("Press key to exit\n");
 	getchar();
-	industrial_analog_out_v2_disable(&iao);
+	industrial_analog_out_v2_set_enabled(&iao, false);
 	industrial_analog_out_v2_destroy(&iao);
 	ipcon_destroy(&ipcon); // Calls ipcon_disconnect internally
 	return 0;

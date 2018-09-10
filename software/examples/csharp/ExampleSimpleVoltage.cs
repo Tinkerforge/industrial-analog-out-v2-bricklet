@@ -18,11 +18,11 @@ class Example
 
 		// Set output voltage to 3.3V
 		iao.SetVoltage(3300);
-		iao.Enable();
+		iao.SetEnabled(true);
 
 		Console.WriteLine("Press enter to exit");
 		Console.ReadLine();
-		iao.Disable();
+		iao.SetEnabled(false);
 		ipcon.Disconnect();
 	}
 }

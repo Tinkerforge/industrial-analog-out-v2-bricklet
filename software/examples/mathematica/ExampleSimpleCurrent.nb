@@ -20,14 +20,14 @@ Notebook[{
 "}],
    RowBox[{"(*", "Set output current to 4.5mA", "*)"}],
    RowBox[{"iao", "@", RowBox[{"SetCurrent", "[", "4500", "]"}]}],
-   RowBox[{"iao", "@", RowBox[{"Enable", "[", "]"}]}],
+   RowBox[{"iao", "@", RowBox[{"SetEnabled", "[", "True", "]"}]}],
    RowBox[{"
 "}],
    RowBox[{"Input", "[", "\"\<Click OK to exit\>\"", "]"}],
    RowBox[{"
 "}],
    RowBox[{"(*", "Clean up", "*)"}],
-   RowBox[{"iao", "@", RowBox[{"Disable", "[", "]"}]}],
+   RowBox[{"iao", "@", RowBox[{"SetEnabled", "[", "False", "]"}]}],
    RowBox[{"ipcon", "@", RowBox[{"Disconnect", "[", "]"}]}],
    RowBox[{"ReleaseNETObject", "[", "iao", "]"}],
    RowBox[{"ReleaseNETObject", "[", "ipcon", "]"}]

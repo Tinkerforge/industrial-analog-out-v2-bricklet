@@ -15,11 +15,11 @@ Module ExampleSimpleVoltage
 
         ' Set output voltage to 3.3V
         iao.SetVoltage(3300)
-        iao.Enable()
+        iao.SetEnabled(True)
 
         Console.WriteLine("Press key to exit")
         Console.ReadLine()
-        iao.Disable()
+        iao.SetEnabled(False)
         ipcon.Disconnect()
     End Sub
 End Module

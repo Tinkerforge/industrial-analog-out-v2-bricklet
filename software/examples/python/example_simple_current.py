@@ -17,8 +17,8 @@ if __name__ == "__main__":
 
     # Set output current to 4.5mA
     iao.set_current(4500)
-    iao.enable()
+    iao.set_enabled(True)
 
     raw_input("Press key to exit\n") # Use input() in Python 3
-    iao.disable()
+    iao.set_enabled(False)
     ipcon.disconnect()

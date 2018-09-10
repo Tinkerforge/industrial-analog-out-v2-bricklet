@@ -14,9 +14,9 @@ function matlab_example_simple_current()
 
     % Set output current to 4.5mA
     iao.setCurrent(4500);
-    iao.enable();
+    iao.setEnabled(true);
 
     input('Press key to exit\n', 's');
-    iao.disable();
+    iao.setEnabled(false);
     ipcon.disconnect();
 end

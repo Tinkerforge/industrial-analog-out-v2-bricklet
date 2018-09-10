@@ -12,12 +12,12 @@ ipcon@Connect[host,port]
 
 (*Set output current to 4.5mA*)
 iao@SetCurrent[4500]
-iao@Enable[]
+iao@SetEnabled[True]
 
 Input["Click OK to exit"]
 
 (*Clean up*)
-iao@Disable[]
+iao@SetEnabled[False]
 ipcon@Disconnect[]
 ReleaseNETObject[iao]
 ReleaseNETObject[ipcon]

@@ -18,14 +18,14 @@ ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function (connectReason) {
         // Set output current to 4.5mA
         iao.setCurrent(4500);
-        iao.enable();
+        iao.setEnabled(true);
     }
 );
 
 console.log('Press key to exit');
 process.stdin.on('data',
     function (data) {
-        iao.disable();
+        iao.setEnabled(false);
         ipcon.disconnect();
         process.exit(0);
     }

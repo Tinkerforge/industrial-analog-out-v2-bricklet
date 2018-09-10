@@ -13,9 +13,9 @@ function octave_example_simple_voltage()
 
     % Set output voltage to 3.3V
     iao.setVoltage(3300);
-    iao.enable();
+    iao.setEnabled(true);
 
     input("Press key to exit\n", "s");
-    iao.disable();
+    iao.setEnabled(false);
     ipcon.disconnect();
 end
