@@ -29,18 +29,18 @@
 #define DAC7760_MIN 0
 #define DAC7760_MAX 4095
 
-#define DAC7760_CH_STATUS_LED_SHOW_V 0
-#define DAC7760_CH_STATUS_LED_SHOW_C 1
+#define DAC7760_OUT_STATUS_LED_SHOW_V 0
+#define DAC7760_OUT_STATUS_LED_SHOW_C 1
 
 typedef struct {
 	uint16_t min;
 	uint16_t max;
 	uint8_t config;
 	uint8_t config_old;
-	uint8_t config_ch_status;
-	uint8_t ch_status_led_show;
-	LEDFlickerState channel_led_flicker_state;
-} CHANNEL_LED_CONFIG_t;
+	uint8_t config_out_status;
+	uint8_t out_status_led_show;
+	LEDFlickerState out_led_flicker_state;
+} OUT_LED_CONFIG_t;
 
 typedef struct {
 	uint16_t voltage;
@@ -59,7 +59,7 @@ typedef struct {
 
 	uint16_t write_length;
 
-	CHANNEL_LED_CONFIG_t ch_status_led_cfg;
+	OUT_LED_CONFIG_t out_status_led_cfg;
 
 	SPIFifo spi_fifo;
 } DAC7760;
