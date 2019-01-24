@@ -1,0 +1,12 @@
+
+
+# Change XYZ to the UID of your Industrial Analog Out Bricklet 2.0
+
+setup:
+	# Set output voltage to 3.3V
+	publish '{"voltage": 3300}' to tinkerforge/request/industrial_analog_out_v2_bricklet/XYZ/set_voltage 
+	publish '{"enabled": true}' to tinkerforge/request/industrial_analog_out_v2_bricklet/XYZ/set_enabled 
+
+cleanup:
+	# If you are done, run this to clean up
+	publish '{"enabled": false}' to tinkerforge/request/industrial_analog_out_v2_bricklet/XYZ/set_enabled 
