@@ -3,7 +3,7 @@
 setup:
 	# Set output current to 4.5mA
 	publish '{"current": 4500}' to tinkerforge/request/industrial_analog_out_v2_bricklet/XYZ/set_current 
-	
+
 	publish '{"enabled": true}' to tinkerforge/request/industrial_analog_out_v2_bricklet/XYZ/set_enabled 
 
 cleanup:

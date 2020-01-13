@@ -3,7 +3,7 @@
 setup:
 	# Set output voltage to 3.3V
 	publish '{"voltage": 3300}' to tinkerforge/request/industrial_analog_out_v2_bricklet/XYZ/set_voltage 
-	
+
 	publish '{"enabled": true}' to tinkerforge/request/industrial_analog_out_v2_bricklet/XYZ/set_enabled 
 
 cleanup:
