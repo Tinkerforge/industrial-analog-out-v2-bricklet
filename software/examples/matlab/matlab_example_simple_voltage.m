@@ -17,6 +17,8 @@ function matlab_example_simple_voltage()
     iao.setEnabled(true);
 
     input('Press key to exit\n', 's');
+
     iao.setEnabled(false);
+
     ipcon.disconnect();
 end

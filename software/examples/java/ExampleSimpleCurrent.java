@@ -23,7 +23,9 @@ public class ExampleSimpleCurrent {
 		iao.setEnabled(true);
 
 		System.out.println("Press key to exit"); System.in.read();
+
 		iao.setEnabled(false);
+
 		ipcon.disconnect();
 	}
 }

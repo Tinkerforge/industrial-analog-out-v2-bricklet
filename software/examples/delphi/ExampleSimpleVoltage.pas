@@ -41,7 +41,9 @@ begin
 
   WriteLn('Press key to exit');
   ReadLn;
+
   iao.SetEnabled(false);
+
   ipcon.Destroy; { Calls ipcon.Disconnect internally }
 end;
 

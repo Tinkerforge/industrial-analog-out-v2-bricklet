@@ -20,5 +20,7 @@ $iao->set_enabled(1);
 
 print "Press key to exit\n";
 <STDIN>;
+
 $iao->set_enabled(0);
+
 $ipcon->disconnect();

@@ -19,7 +19,9 @@ Module ExampleSimpleVoltage
 
         Console.WriteLine("Press key to exit")
         Console.ReadLine()
+
         iao.SetEnabled(False)
+
         ipcon.Disconnect()
     End Sub
 End Module

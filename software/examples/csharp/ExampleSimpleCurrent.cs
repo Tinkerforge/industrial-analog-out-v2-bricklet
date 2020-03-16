@@ -22,7 +22,9 @@ class Example
 
 		Console.WriteLine("Press enter to exit");
 		Console.ReadLine();
+
 		iao.SetEnabled(false);
+
 		ipcon.Disconnect();
 	}
 }

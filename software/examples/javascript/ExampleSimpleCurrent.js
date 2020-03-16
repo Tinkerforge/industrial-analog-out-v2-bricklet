@@ -26,6 +26,7 @@ console.log('Press key to exit');
 process.stdin.on('data',
     function (data) {
         iao.setEnabled(false);
+
         ipcon.disconnect();
         process.exit(0);
     }

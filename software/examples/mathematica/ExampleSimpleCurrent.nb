@@ -26,8 +26,9 @@ Notebook[{
    RowBox[{"Input", "[", "\"\<Click OK to exit\>\"", "]"}],
    RowBox[{"
 "}],
-   RowBox[{"(*", "Clean up", "*)"}],
    RowBox[{"iao", "@", RowBox[{"SetEnabled", "[", "False", "]"}]}],
+   RowBox[{"
+"}],
    RowBox[{"ipcon", "@", RowBox[{"Disconnect", "[", "]"}]}],
    RowBox[{"ReleaseNETObject", "[", "iao", "]"}],
    RowBox[{"ReleaseNETObject", "[", "ipcon", "]"}]
