@@ -14,14 +14,14 @@ fn main() -> Result<(), Box<dyn Error>> {
                                           // Don't use device before ipcon is connected.
 
     // Set output current to 4.5mA
-    iao.set_current(4500);
-    iao.set_enabled(true);
+    iao.set_current(4500).recv()?;
+    iao.set_enabled(true).recv()?;
 
     println!("Press enter to exit.");
     let mut _input = String::new();
     io::stdin().read_line(&mut _input)?;
 
-    iao.set_enabled(false);
+    iao.set_enabled(false).recv()?;
 
     ipcon.disconnect();
     Ok(())
