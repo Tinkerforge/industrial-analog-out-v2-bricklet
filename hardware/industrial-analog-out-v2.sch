@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:industrial-analog-out-v2-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -450,7 +449,7 @@ U 1 1 551E36C5
 P 8450 2550
 F 0 "L4" V 8530 2550 50  0000 C CNN
 F 1 "FB" V 8350 2550 50  0000 C CNN
-F 2 "kicad-libraries:C0603F" H 8450 2550 60  0001 C CNN
+F 2 "kicad-libraries:R0603F" H 8450 2550 60  0001 C CNN
 F 3 "" H 8450 2550 60  0000 C CNN
 	1    8450 2550
 	0    1    1    0   
@@ -816,7 +815,7 @@ U 1 1 5547E852
 P 10600 4950
 F 0 "L3" V 10680 4950 50  0000 C CNN
 F 1 "FB" V 10500 4950 50  0000 C CNN
-F 2 "kicad-libraries:C0603F" H 10600 4950 60  0001 C CNN
+F 2 "kicad-libraries:R0603F" H 10600 4950 60  0001 C CNN
 F 3 "" H 10600 4950 60  0000 C CNN
 	1    10600 4950
 	0    1    1    0   
@@ -860,7 +859,7 @@ U 1 1 55480197
 P 7500 4950
 F 0 "L1" V 7580 4950 50  0000 C CNN
 F 1 "FB" V 7400 4950 50  0000 C CNN
-F 2 "kicad-libraries:C0603F" H 7500 4950 60  0001 C CNN
+F 2 "kicad-libraries:R0603F" H 7500 4950 60  0001 C CNN
 F 3 "" H 7500 4950 60  0000 C CNN
 	1    7500 4950
 	0    1    1    0   
